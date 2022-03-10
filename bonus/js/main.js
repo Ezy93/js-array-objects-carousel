@@ -135,3 +135,26 @@ nextButton.addEventListener("click" , function(){
 
 });
 
+setInterval(automatedCarousel , 2000);
+
+
+/* funzione per atumatizzare il cambio immagini nel carousel */
+function automatedCarousel(){
+    
+    document.getElementsByClassName("carousel-element")[active].classList.remove("active");
+    document.getElementsByClassName("pointer")[active].classList.remove("active-thumb");
+    document.getElementsByClassName("pointer")[active].classList.add("sleepy");
+    
+    
+    if(active === landscape.length - 1){
+        active = 0;
+    }else{
+        active++;
+    }
+
+    document.getElementsByClassName("carousel-element")[active].classList.add("active");
+    document.getElementsByClassName("pointer")[active].classList.add("active-thumb");
+    document.getElementsByClassName("pointer")[active].classList.remove("sleepy");
+    
+
+};
