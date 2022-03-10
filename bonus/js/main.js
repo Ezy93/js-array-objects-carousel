@@ -97,20 +97,7 @@ const nextButton = document.querySelector(".my-next");
 /* aggiungo un eventlistener per far si che al click sul bottone previous le immagini scorrano  */
 previousButton.addEventListener("click" , function(){
     
-    document.getElementsByClassName("carousel-element")[active].classList.remove("active");
-    document.getElementsByClassName("pointer")[active].classList.remove("active-thumb");
-    document.getElementsByClassName("pointer")[active].classList.add("sleepy");
-    
-    
-    if(active == 0){
-        active = landscape.length - 1;
-    }else{
-        active--;
-    }
-
-    document.getElementsByClassName("carousel-element")[active].classList.add("active");
-    document.getElementsByClassName("pointer")[active].classList.add("active-thumb");
-    document.getElementsByClassName("pointer")[active].classList.remove("sleepy");
+    automatedCarouselToLeft()
 
 });
 
@@ -118,29 +105,43 @@ previousButton.addEventListener("click" , function(){
 /* aggiungo un eventlistener per far si che al click sul bottone next le immagini scorrano  */
 nextButton.addEventListener("click" , function(){
     
-    document.getElementsByClassName("carousel-element")[active].classList.remove("active");
-    document.getElementsByClassName("pointer")[active].classList.remove("active-thumb");
-    document.getElementsByClassName("pointer")[active].classList.add("sleepy");
-    
-    
-    if(active === landscape.length - 1){
-        active = 0;
-    }else{
-        active++;
-    }
-
-    document.getElementsByClassName("carousel-element")[active].classList.add("active");
-    document.getElementsByClassName("pointer")[active].classList.add("active-thumb");
-    document.getElementsByClassName("pointer")[active].classList.remove("sleepy");
+    automatedCarouselToRight()
 
 });
 
-setInterval(automatedCarousel , 2000);
+//? BONUS 1
+const intervalToRight = setInterval(automatedCarouselToRight , 2000);
 
+//? BONUS 2
+document.getElementById("my-after-carousel").innerHTML = ` <div id ="reverseBtn" class = "btn btn-primary">inverti la direzione!!!</div> `;
+reverseButton = document.getElementById("reverseBtn");
+
+let check = false;
+
+reverseButton.addEventListener("click", function(){
+
+    if(!check){
+
+        clearInterval(intervalToRight); 
+        const intervalToLeft = setInterval(automatedCarouselToLeft, 2000);
+        
+    }else{
+
+        clearInterval(intervalToLeft);
+        intervalToRight
+        check = false;
+    }
+
+
+});
+
+
+
+//? IT'S FUNCTION TIME --------------------------------------------------------------
 
 /* funzione per atumatizzare il cambio immagini nel carousel */
-function automatedCarousel(){
-    
+function automatedCarouselToRight(){
+
     document.getElementsByClassName("carousel-element")[active].classList.remove("active");
     document.getElementsByClassName("pointer")[active].classList.remove("active-thumb");
     document.getElementsByClassName("pointer")[active].classList.add("sleepy");
@@ -158,3 +159,22 @@ function automatedCarousel(){
     
 
 };
+
+function automatedCarouselToLeft(){
+
+    document.getElementsByClassName("carousel-element")[active].classList.remove("active");
+    document.getElementsByClassName("pointer")[active].classList.remove("active-thumb");
+    document.getElementsByClassName("pointer")[active].classList.add("sleepy");
+    
+    
+    if(active == 0){
+        active = landscape.length - 1;
+    }else{
+        active--;
+    }
+
+    document.getElementsByClassName("carousel-element")[active].classList.add("active");
+    document.getElementsByClassName("pointer")[active].classList.add("active-thumb");
+    document.getElementsByClassName("pointer")[active].classList.remove("sleepy");
+}
+
