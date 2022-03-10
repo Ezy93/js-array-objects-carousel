@@ -5,13 +5,15 @@ body{
 div.my-carousel-container{
     min-height: 700px;
     min-width:800px ;
-    background-color: aquamarine;
+
 }
 
 div.my-carousel-images{
     background-color: cadetblue;
-    min-height: 540px;
+    height: 540px;
 }
+
+
 
 .carousel-element{
     height: 100%;
@@ -25,7 +27,8 @@ div.my-thumbnails{
     display: flex;
 }
 
-div.my-thumbnails img{
+div.my-thumbnails img,
+div.my-carousel-images img{
     object-fit: cover;
     height: 100%;
 }
