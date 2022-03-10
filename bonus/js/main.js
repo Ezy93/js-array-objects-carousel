@@ -120,17 +120,12 @@ let check = false;
 
 reverseButton.addEventListener("click", function(){
 
-    if(!check){
+    
 
         clearInterval(intervalToRight); 
-        const intervalToLeft = setInterval(automatedCarouselToLeft, 2000);
+        setInterval(automatedCarouselToLeft, 2000);
         
-    }else{
-
-        clearInterval(intervalToLeft);
-        intervalToRight
-        check = false;
-    }
+    
 
 
 });
