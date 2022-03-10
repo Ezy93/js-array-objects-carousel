@@ -13,6 +13,12 @@ div.my-carousel-images{
     min-height: 540px;
 }
 
+.carousel-element{
+    height: 100%;
+    width: 100%;
+    text-align: start;
+}
+
 div.my-thumbnails{
     background-color: violet;
     min-height: 160px;
@@ -59,4 +65,21 @@ div.my-next > span::after{
     font-weight: 900;
     content: "\f520";
     line-height: 30px;
+}
+
+.my-bottom{
+    bottom: 0;
+}
+
+.active{
+    display: inline-block !important; /* ! so che è brutto ma ho dovuto :P */
+}
+
+.active-thumb{
+    filter: brightness(115%);
+    border: 4px solid rgb(156, 156, 156);
+}
+
+.sleepy{
+    filter: brightness(50%);
 }
